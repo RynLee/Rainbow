@@ -29,24 +29,30 @@ public class Rainbow extends JPanel
 
     // Declare and initialize local int variables xCenter, yCenter
     // that represent the center of the rainbow rings:
-int xCenter = 1/2*width;
-int yCenter = 3/4*height;
-int largeRadius=1/4*width;
+int xCenter = width/2;
+int yCenter = 3*height/4;
+int largeRadius=width/4;
     // ________________________________________________
  
     // Declare and initialize the radius of the large semicircle:
     // ________________________________________________
 
-    g.setColor(Color.RED);
+	g.setColor(Color.RED);
 
     // Draw the large semicircle:
-     g.fillArc(xCenter, yCenter, width, height, 0, 180);
+    g.fillArc(xCenter-largeRadius, yCenter-largeRadius, largeRadius*2, largeRadius*2, 0, 180);
 
     // Declare and initialize the radii of the small and medium
     // semicircles and draw them:
-    int smallRadius =  1/4*height;
-    int math.sqrt(x);
-
+    int smallRadius =  height/4;
+    int mediumRadius = (int)Math.sqrt(smallRadius*largeRadius);
+    int miniRadius = smallRadius/2;
+    g.setColor(Color.GREEN);
+    g.fillArc(xCenter-mediumRadius, yCenter-mediumRadius, mediumRadius*2, mediumRadius*2, 0, 180);
+    g.setColor(Color.MAGENTA);
+    g.fillArc(xCenter-smallRadius, yCenter-smallRadius, smallRadius*2, smallRadius*2, 0, 180);
+    g.setColor(skyColor);
+    g.fillArc(xCenter-miniRadius, yCenter-miniRadius, miniRadius*2, miniRadius*2, 0, 180);
     // Calculate the radius of the innermost (sky-color) semicircle
     // so that the width of the middle (green) ring is the
     // arithmetic mean of the widths of the red and magenta rings:
